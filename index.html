@@ -11,7 +11,8 @@
   <script>
   const url = new URL('http://nnh.to'), today = new Date();
   const a  = document.querySelector('ul > li > a');
-  url.pathname = `/${today.getMonth() + 1}/${today.getDate()}.html`;
+  const md = [today.getMonth() + 1, today.getDate()].map((d) => `0${d}`.slice(-2)).join('/');
+  url.pathname = `/${md}.html`;
   a.href = url.href;
   a.textContent = `${
     today.getMonth() + 1
