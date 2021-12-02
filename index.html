@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>今日は何の日</title>
+</head>
+<body>
+  <ul>
+    <li><a href=""></a></li>
+  </ul>
+  <script>
+  const url = new URL('http://nnh.to'), today = new Date();
+  const a  = document.querySelector('ul > li > a');
+  url.pathname = `/${today.getMonth() + 1}/${today.getDate()}.html`;
+  a.href = url.href;
+  a.textContent = `${
+    today.getMonth() + 1
+  }月${
+    today.getDate()
+  }日 今日は何の日～毎日が記念日～`;
+  </script>
+</body>
+</html>
+</head>
