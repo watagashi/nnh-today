@@ -16,21 +16,27 @@
       today = new Date();
       get month() {return this.today.getMonth() + 1;}
       get date() {return this.today.getDate();}
+      getUrl(baseUrl, pathname) {
+        const url = new URL(baseUrl);
+        url.pathname = pathname;
+        return url.href;
+      }
       get url() {return '';}
       get text() {return '';}
-      apply(selector) {
+      apply(id) {
         const a = document.createElement('a');
         a.href = this.url;
         a.textContent = this.text;
-        document.getElementById(selector).appendChild(a);
+        document.getElementById(id).appendChild(a);
       }
     }
 
     class Nnh extends BaseAnchor {
       get url() {
-        const url = new URL('http://nnh.to');
-        url.pathname = `/${[this.month, this.date].map((d) => `0${d}`.slice(-2)).join('/')}.html`;
-        return url.href
+        return this.getUrl(
+          'https://nnh.to',
+          `/${[this.month, this.date].map((d) => `0${d}`.slice(-2)).join('/')}.html`
+        );
       }
       get text() {
         return `${this.month}月${this.date}日 今日は何の日～毎日が記念日～`;
@@ -40,9 +46,10 @@
 
     class Wikipedia extends BaseAnchor {
       get url() {
-        const url = new URL('https://ja.wikipedia.org');
-        url.pathname = `/wiki/${this.month}%E6%9C%88${this.date}%E6%97%A5`;
-        return url.href
+        return this.getUrl(
+          'https://ja.wikipedia.org',
+          `/wiki/${this.month}%E6%9C%88${this.date}%E6%97%A5`
+        );
       }
       get text() {
         return `${this.month}月${this.date}日 - Wikipedia`;
