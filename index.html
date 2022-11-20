@@ -40,7 +40,7 @@
 
     class Wikipedia extends BaseAnchor {
       get url() {
-        const url = new URL('https://ja.wikipedia.org/wiki');
+        const url = new URL('https://ja.wikipedia.org');
         url.pathname = `/wiki/${this.month}%E6%9C%88${this.date}%E6%97%A5`;
         return url.href
       }
