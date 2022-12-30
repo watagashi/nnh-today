@@ -10,6 +10,9 @@
   <ul>
     <li id="nnh"></li>
     <li id="wikipedia"></li>
+    <ul>
+      <li id="wikipedia-lunar"></li>
+    </ul>
   </ul>
   <script>
     class BaseAnchor {
@@ -56,6 +59,16 @@
       }
     }
     new Wikipedia().apply('wikipedia');
+
+    class WikipediaLunar extends Wikipedia {
+      get url() {
+        return super.url + '_(%E6%97%A7%E6%9A%A6)';
+      }
+      get text() {
+        return super.text.replace(/ - Wikipedia$/, ' (旧暦)$&');
+      }
+    }
+    new WikipediaLunar().apply('wikipedia-lunar');
   </script>
 </body>
 
