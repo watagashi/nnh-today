@@ -9,10 +9,11 @@
 <body>
   <ul>
     <li id="nnh"></li>
-    <li id="wikipedia"></li>
-    <ul>
-      <li id="wikipedia-lunar"></li>
-    </ul>
+    <li id="wikipedia">
+      <ul>
+        <li id="wikipedia-lunar"></li>
+      </ul>
+    </li>
   </ul>
   <hr>
   <address>
@@ -34,7 +35,8 @@
         const a = document.createElement('a');
         a.href = this.url;
         a.textContent = this.text;
-        document.getElementById(id).appendChild(a);
+        const element = document.getElementById(id)
+        element.insertBefore(a, element.lastElementChild);
       }
     }
 
